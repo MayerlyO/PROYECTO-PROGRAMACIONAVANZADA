@@ -262,10 +262,10 @@ def do_acerca():
     st.image('basura.jpg', caption="Basura en la playa", use_column_width=True)
     st.link_button("Ir a código del proyecto", "https://github.com/summermp/streamlit", type='primary')
     st.markdown("""
-<p class='desc_text'> La base de datos de composición de residuos sólidos domiciliarios corresponde a la información sobre la distribución de los residuos sólidos del ámbito domiciliario generados por tipo (medido en tonelada). Dicha información, fue obtenida desde los años 2019 hasta el 2022, con respecto a todos los departamentos de nuestro país.</br></br>
+<p class='desc_text'> La base de datos de composición de residuos sólidos Municipales corresponde a la información sobre la distribución de los residuos sólidos del ámbito domiciliario generados por tipo (medido en tonelada). Dicha información, fue obtenida desde los años 2014 hasta el 2021, con respecto a todos los departamentos de nuestro país.</br></br>
 La información que se toma de insumo para la estimación de esta estadística es obtenida a partir de dos fuentes de información: </br></br>
 Sistema de Información para la Gestión de los Residuos Sólidos – SIGERSOL el cual es administrado por el Ministerio del Ambiente (MINAM).</br></br>
-Los Estudios de caracterización de residuos sólidos municipales, que se estandarizaron desde el año 2019 en adelante, aprobada mediante Resolución Ministerial N° 457-2018-MINAM.</p>
+Los Estudios de caracterización de residuos sólidos municipales, que se estandarizaron desde el año 2014 en adelante, aprobada mediante Resolución Ministerial N° 457-2018-MINAM.</p>
 <h4 class='title_text'>¿Qué buscamos?</h4>
 <p class='desc_text'>Buscamos brindar información sobre la distribución de los residuos sólidos en el ámbito domiciliario en todos los departamentos del Perú; facilitando su uso mediante gráficas y tablas para un mejor entendimiento.</p>
 <h4 class='title_text'>¿Qué son los residuos sólidos domiciliarios?</h4>
@@ -276,7 +276,7 @@ Los Estudios de caracterización de residuos sólidos municipales, que se estand
 # Función para mostrar información de nosotros
 def do_nosotros():
     # st.markdown("<h4 class='title_text'>¿Quiénes somos?</h4>", unsafe_allow_html=True)
-    st.markdown("<p class='desc_text'>Somos estudiantes del cuarto semestre de la carrera de ingeniería ambiental de la Universidad Peruana Cayetano Heredia (UPCH). Nos apasiona el procesamiento y visualización de datos para mejorar y comprender la problemática ambiental y brindar información sobre los residuos sólidos generados en el Perú.</p>", unsafe_allow_html=True)
+    st.markdown("<p class='desc_text'>Somos estudiantes del quinto semestre de la carrera de ingeniería ambiental de la Universidad Peruana Cayetano Heredia (UPCH). Nos apasiona el procesamiento y visualización de datos para mejorar y comprender la problemática ambiental y brindar información sobre los residuos sólidos generados en el Perú.</p>", unsafe_allow_html=True)
     st.image('equipo.jpg', caption="Equipo Ing. Ambiental", use_column_width=True)
 # Definición de estilos para la interfaz gráfica
 # Estilo del contenedor principal
@@ -434,4 +434,11 @@ with col3:
     st.write("")
 # Mostrar un texto en la barra lateral después de las columnas y agregar efecto de nieve
 st.sidebar.text("Ing. ambiental - UPCH|2024")
-st.snow()
+# Inicializar la variable en el estado de la sesión
+if 'snow_shown' not in st.session_state:
+    st.session_state.snow_shown = False
+
+# Mostrar la animación de nieve una vez
+if not st.session_state.snow_shown:
+    st.snow()
+    st.session_state.snow_shown = True
